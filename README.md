@@ -2,39 +2,25 @@
 
 For this challenge, you will create a program to play Rock, Paper, Scissors. A program that picks at random will usually win 50% of the time. To pass this challenge your program must play matches against four different bots, winning at least 60% of the games in each match.
 
-In the file `RPS.py` you are provided with a function called `player`. The function takes an argument that is a string describing the last move of the opponent ("R", "P", or "S"). The function should return a string representing the next move for it to play ("R", "P", or "S").
 
-A player function will receive an empty string as an argument for the first game in a match since there is no previous play.
+### Solution
 
-The file `RPS.py` shows an example function that you will need to update. The example function is defined with two arguments (`player(prev_play, opponent_history = [])`). The function is never called with a second argument so that one is completely optional. The reason why the example function contains a second argument (`opponent_history = []`) is because that is the only way to save state between consecutive calls of the `player` function. You only need the `opponent_history` argument if you want to keep track of the opponent_history.
+Your bot has to play 1000 games and win 60% of the time(or more!). You might thing that a 50% chance of winning is awlays there since both players just choose randomly and over large amount of games it evens out.
+What happens when your program your bot to memorise human(or other bot) moves? You can now check for patterns as humans(and computers) are predictable.
 
-*Hint: To defeat all four opponents, your program may need to have multiple strategies that change depending on the plays of the opponent.*
+### Knuth-Morris-Pratt
 
-### Development
+I've decided to implement my solution using KMP algorithm to check for patterns inside a string of all moves your opponent has played.
 
-Do not modify `RPS_game.py`. Write all your code in `RPS.py`. For development, you can use `main.py` to test your code. 
+The program takes last 3 moves played by opponent and tries to predict the next move using KMP to help us find the patterns.
 
-`main.py` imports the game function and bots from `RPS_game.py`.
+### Win/Lose
 
-To test your code, play a game with the `play` function. The `play` function takes four arguments:
-- two players to play against each other (the players are actually functions)
-- the number of games to play in the match
-- an optional argument to see a log of each game. Set it to `True` to see these messages.
+Verses a truly random player that doesn't leave patterns, percentage varies around 50%.
+Versus players that make a lot of easy patterns, the bot wins in 70-99 percent of the time.
+Versus players that have a more advanced playstyle that also includes patterns, we win in about 60% of the time.
 
-```py
-play(player1, player2, num_games[, verbose])
-```
-For example, here is how you would call the function if you want `player` and `quincy` to play 1000 games against each other and you want to see the results of each game:
-```py
-play(player, quincy, 1000, verbose=True)
-```
+### My bot is located in RPS file, and I've also added 2 other bots.
+### All other code is generated from the Repl.it project.
 
-Click the "run" button and `main.py` will run.
 
-### Testing 
-
-The unit tests for this project are in `test_module.py`. We imported the tests from `test_module.py` to `main.py` for your convenience. If you uncomment the last line in `main.py`, the tests will run automatically whenever you hit the "run" button.
-
-### Submitting
-
-Copy your project's URL and submit it to freeCodeCamp.
