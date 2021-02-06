@@ -21,6 +21,6 @@ Versus players that make a lot of easy patterns, the bot wins in 70-99 percent o
 Versus players that have a more advanced playstyle that also includes patterns, we win in about 60% of the time.
 
 ### My bot is located in RPS file, and I've also added 2 other bots.
-### All other code is generated from the Repl.it project.
+### All other code is generated from the freeCodeCamp using Repl.it
 
 
